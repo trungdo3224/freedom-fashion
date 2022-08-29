@@ -1,29 +1,33 @@
-import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect, Fragment } from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-import CategoriesPreview from '../categories-preview/categories-preview.component';
-import Category from '../category/category.component';
-import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
-import { setCategoriesMap } from '../../store/categories/category.action';
+import ProductCard from '../../components/product-card/product-card.component';
 
-const Shop = () => {
-  const dispatch = useDispatch();
+import { selectCategoriesMap } from '../../store/categories/category.selector';
+
+import { CategoryContainer, CategoryTitle } from './category.styles';
+
+const Category = () => {
+  const { category } = useParams();
+  const categoriesMap = useSelector(selectCategoriesMap);
+  const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
-    const getCategoriesMap = async () => {
-      const categoriesArray = await getCategoriesAndDocuments('categories');
-      dispatch(setCategoriesMap(categoriesArray));
-    };
+    setProducts(categoriesMap[category]);
+  }, [category, categoriesMap]);
 
-    getCategoriesMap();
-  }, [dispatch]);
   return (
-    <Routes>
-      <Route index element={<CategoriesPreview />} />
-      <Route path={`:category`} element={<Category />} />
-    </Routes>
+    <Fragment>
+      <CategoryTitle>{category.toUpperCase()}</CategoryTitle>
+      <CategoryContainer>
+        {products &&
+          products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+      </CategoryContainer>
+    </Fragment>
   );
 };
 
-export default Shop;
+export default Category;
