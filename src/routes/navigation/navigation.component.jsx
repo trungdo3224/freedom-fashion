@@ -1,42 +1,39 @@
-import { Fragment } from "react";
-import { Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Fragment } from 'react';
+import { Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import CartIcon from '../../components/cart-icon/cart-icon.component';
+import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component';
+
+import { currentUserSelector } from '../../store/user/user.selector';
+import { selectIsCartOpen } from '../../store/cart/cart.selector';
+
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
-import { signOutUser } from "../../utils/firebase/firebase.utils";
-import CartIcon from "../../components/cart-icon/cart-icon.component";
-import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+import { signOutUser } from '../../utils/firebase/firebase.utils';
+
 import {
+  
   NavigationContainer,
-  LogoContainer,
   NavLinks,
   NavLink,
+  LogoContainer,
 } from './navigation.styles';
 
-import { currentUserSelector } from "../../store/user/user.selector";
-
-function Navigation() {
+const Navigation = () => {
   const currentUser = useSelector(currentUserSelector);
- 
-  const { toggle } = useContext(CartContext);
-
-
-  const signOutHandler = async () => {
-    await signOutUser();
-  };
+  const isCartOpen = useSelector(selectIsCartOpen);
 
   return (
     <Fragment>
       <NavigationContainer>
         <LogoContainer to='/'>
-          <CrwnLogo />
+          <CrwnLogo className='logo' />
         </LogoContainer>
         <NavLinks>
           <NavLink to='/shop'>SHOP</NavLink>
 
           {currentUser ? (
-            <NavLink as='span' onClick={signOutHandler}>
+            <NavLink as='span' onClick={signOutUser}>
               SIGN OUT
             </NavLink>
           ) : (
@@ -44,12 +41,11 @@ function Navigation() {
           )}
           <CartIcon />
         </NavLinks>
-        {toggle && <CartDropdown />}
+        {isCartOpen && <CartDropdown />}
       </NavigationContainer>
       <Outlet />
     </Fragment>
   );
 };
-
 
 export default Navigation;
