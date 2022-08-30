@@ -23,6 +23,8 @@ export const CartDropDownContainer = styled.div`
   ${InvertedButton} {
     margin-top: auto;
   }
+
+
 `;
 
 export const EmptyMessage = styled.span`
@@ -34,5 +36,17 @@ export const CartItems = styled.div`
   height: 240px;
   display: flex;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow-y: overlay;
+  &::-webkit-scrollbar {
+    width: 8px; 
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #d3d3d3;
+    border-radius: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #4e4e4e;
+    border-radius: 8px;
+  }
 `;
