@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
-import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
+import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import { selectCartTotal } from "../../store/cart/cart.selector";
 import { currentUserSelector } from "../../store/user/user.selector";
 import { PaymentFormContainer, FormContainer, PaymentButton } from "./payment-form.styles"
@@ -44,6 +44,7 @@ const PaymentForm = () => {
                 },
             },
         });
+        setIsProcessingPayment(false);
         if (paymentResult.error) {
             alert(paymentResult.error);
         } else {
@@ -51,7 +52,7 @@ const PaymentForm = () => {
                 alert("Payment Successful");
             }
         }
-        setIsProcessingPayment(false);
+        
     }
 
     return (
