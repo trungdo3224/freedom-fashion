@@ -7,6 +7,7 @@ import {
   HeaderBlock,
   Total
 } from "./checkout.styles";
+import PaymentForm from "../../components/payment-form/payment-form.component";
 
 const CheckOut = () => {
   const cartItems = useSelector(selectCartItems);
@@ -35,6 +36,7 @@ const CheckOut = () => {
         <CheckOutItem cartItem={cartItem} />
       ))}
       <Total>{totalPrice > 0 && `Total:$${totalPrice}`}</Total>
+      {totalPrice > 0 && <PaymentForm/>}
     </CheckoutContainer>
   );
 };
