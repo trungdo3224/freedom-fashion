@@ -44,14 +44,17 @@ const PaymentForm = () => {
                 },
             },
         });
-        setIsProcessingPayment(false);
+        
         if (paymentResult.error) {
             alert(paymentResult.error);
+            setIsProcessingPayment(false);
         } else {
             if (paymentResult.paymentIntent.status === "succeeded") {
                 alert("Payment Successful");
+                setIsProcessingPayment(false);
             }
         }
+
         
     }
 
