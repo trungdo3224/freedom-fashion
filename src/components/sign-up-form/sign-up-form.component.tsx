@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 import { signUpStart  } from "../../store/user/user.action";
+import {AuthError, AuthErrorCodes} from "firebase/auth"
 
 import Button, {BUTTON_TYPE_CLASSES} from "../button/button.component";
 
@@ -18,7 +19,7 @@ const SignUpForm = () => {
 
   const [formFields, setFormFields] = useState(defaultFormField);
   const { displayName, email, password, confirmPassword } = formFields;
-  const handleChange = (event) => {
+  const handleChange = (event:ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
@@ -28,7 +29,7 @@ const SignUpForm = () => {
     setFormFields(defaultFormField);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== confirmPassword) {
       alert("Passwords do not match");
@@ -39,7 +40,7 @@ const SignUpForm = () => {
       resetFormField();
 
     } catch (error) {
-      if (error.code === "auth/email-already-in-use")
+      if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS)
         alert("Cannot create account, email already in use.");
       console.log(`${error}`);
     }
@@ -51,7 +52,7 @@ const SignUpForm = () => {
       <span>Sign up with email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
-          handleChange={handleChange}
+          onChange={handleChange}
           label={"Display Name"}
           type={"text"}
           value={displayName}
@@ -59,7 +60,7 @@ const SignUpForm = () => {
           required
         />
         <FormInput
-          handleChange={handleChange}
+          onChange={handleChange}
           label={"Email"}
           type={"email"}
           value={email}
@@ -67,7 +68,7 @@ const SignUpForm = () => {
           required
         />
         <FormInput
-          handleChange={handleChange}
+          onChange={handleChange}
           label={"Password"}
           type={"password"}
           value={password}
@@ -75,7 +76,7 @@ const SignUpForm = () => {
           required
         />
         <FormInput
-          handleChange={handleChange}
+          onChange={handleChange}
           label={"Confirm Password"}
           type={"password"}
           value={confirmPassword}
