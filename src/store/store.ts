@@ -7,10 +7,10 @@ import createSagaMiddleware from "redux-saga";
 import { rootReducer } from "./root-reducer";
 import { rootSaga } from "./root-saga";
 
-export type RootStage = ReturnType<typeof rootReducer>;
+export type RootState = ReturnType<typeof rootReducer>;
 
-type ExtendedPersistConfig = PersistConfig<RootStage> & {
-  blacklist: (keyof RootStage)[]
+type ExtendedPersistConfig = PersistConfig<RootState> & {
+  blacklist: (keyof RootState)[]
 }
 
 const persistConfig : ExtendedPersistConfig = {

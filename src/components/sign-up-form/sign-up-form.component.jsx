@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { emailSignUpStart  } from "../../store/user/user.action";
+import { signUpStart  } from "../../store/user/user.action";
 
 import Button, {BUTTON_TYPE_CLASSES} from "../button/button.component";
 
@@ -35,7 +35,7 @@ const SignUpForm = () => {
       return;
     }
     try {
-      dispatch(emailSignUpStart(displayName, email, password));
+      dispatch(signUpStart(displayName, email, password));
       resetFormField();
 
     } catch (error) {

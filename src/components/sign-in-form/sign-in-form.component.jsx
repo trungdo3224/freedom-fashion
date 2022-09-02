@@ -5,7 +5,7 @@ import FormInput from '../form-input/form-input.component';
 import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 
 import { ButtonsContainer, SignInContainer } from './sign-in-form.styles';
-import { goolgeSignInStart, emailSignInStart } from "../../store/user/user.action";
+import { googleSignInStart, emailSignInStart } from "../../store/user/user.action";
 
 
 const defaultFormFields = {
@@ -24,7 +24,7 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    dispatch(goolgeSignInStart());
+    dispatch(googleSignInStart());
   };
 
   const handleSubmit = async (event) => {
