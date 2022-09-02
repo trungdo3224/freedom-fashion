@@ -1,13 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { FC } from "react";
 import { CategoryItemContainer, Body, BackgroundImage } from "./category-item.styles";
 
-function CategoryItem({ category }) {
+type CategoryProps = {
+  id:number,
+  title:string,
+  imageUrl:string,
+  route: string,
+}
+
+const CategoryItem:FC<CategoryProps> = ({title, imageUrl, route}) => {
 
   const navigate = useNavigate();
-  const { title, imageUrl, route } = category;
 
   const navigateHandler = () => navigate(route);
-
   return (
     <CategoryItemContainer>
       <BackgroundImage imageUrl={imageUrl} />
