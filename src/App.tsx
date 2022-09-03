@@ -13,6 +13,7 @@ const Authentication = lazy(
 );
 const Shop = lazy(() => import("./pages/shop/shop.component"));
 const CheckOut = lazy(() => import("./pages/checkout/checkout.component"));
+const Contact = lazy(() => import("./pages/contact/contact.component"));
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App() {
           <Route path="/auth" element={<Authentication />} />
           <Route path="/shop/*" element={<Shop />} />
           <Route path="/checkout" element={<CheckOut />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>
     </Suspense>
