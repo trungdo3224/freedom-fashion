@@ -1,7 +1,7 @@
 import { useDispatch,useSelector } from "react-redux/es/exports";
-import { selectCartItems } from "../../store/cart/cart.selector";
+import { selectCartItems } from "../../redux/cart/cart.selector";
 import { FC } from "react";
-import { addItemToCart } from "../../store/cart/cart.action"
+import { addItemToCart } from "../../redux/cart/cart.action"
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import {
   ProductCardContainer,
@@ -9,7 +9,7 @@ import {
   Name,
   Price,
 } from "./product-card.styles";
-import { CategoryItem } from "../../store/categories/category.types";
+import { CategoryItem } from "../../redux/categories/category.types";
 
 type ProductCardProps = {
   product: CategoryItem

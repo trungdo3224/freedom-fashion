@@ -2,8 +2,8 @@ import { useState, FormEvent } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useSelector } from "react-redux";
 
-import { selectCartTotal } from "../../store/cart/cart.selector";
-import { currentUserSelector } from "../../store/user/user.selector";
+import { selectCartTotal } from "../../redux/cart/cart.selector";
+import { currentUserSelector } from "../../redux/user/user.selector";
 
 import { FormContainer } from "./payment-form.styles";
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";

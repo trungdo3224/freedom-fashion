@@ -22,7 +22,7 @@ import {
   getDocs,
   QueryDocumentSnapshot,
 } from "firebase/firestore";
-import { Category } from "../../store/categories/category.types";
+import { Category } from "../../redux/categories/category.types";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDY8b-DvwLlhUnl_YbYz4XC5uUrPo5ChHU",
