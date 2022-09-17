@@ -17,7 +17,7 @@ export const ContactTitle = styled.h1`
 export const ContactInformationContainer = styled.div`
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align: left;
     padding: 20px;
     width: 400px;
     color: #000;
