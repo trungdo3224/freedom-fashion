@@ -35,8 +35,9 @@ const CheckOut = () => {
       {cartItems.map((cartItem) => (
         <CheckOutItem cartItem={cartItem} />
       ))}
-      <Total>{totalPrice > 0 && `Total:$${totalPrice}`}</Total>
-      {totalPrice > 0 && <PaymentForm/>}
+      {/* <Total>{totalPrice > 0 && `Total:$${totalPrice}`}</Total>
+      {totalPrice > 0 && <PaymentForm/>} */}
+      <Total>$ {totalPrice}</Total>
     </CheckoutContainer>
   );
 };

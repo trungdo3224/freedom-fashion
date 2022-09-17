@@ -1,9 +1,9 @@
-import { ContactContainer, ContactInformationContainer } from "./contact.styles";
+import { ContactContainer, ContactInformationContainer, ContactTitle } from "./contact.styles";
 
 const ContactPage = () => {
   return (
     <ContactContainer>
-        <h1>Contact Us</h1>
+        <ContactTitle>Contact Us</ContactTitle>
         <ContactInformationContainer>
             <h3>Phone: 0123 456 789</h3>
             <h3>Email: freedom-engine@gmail.com</h3>

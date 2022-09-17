@@ -18,8 +18,10 @@ export const ShoppingSvg = styled(ShoppingIcon)`
 
 export const ItemCount = styled.span`
   position: absolute;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+
   bottom: 10px;
-  color: #000000;
+  color: #000;
 `;
