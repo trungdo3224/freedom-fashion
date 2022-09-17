@@ -6,7 +6,7 @@ import { GlobalStyle } from "./global.styles";
 
 const Home = lazy(() => import("./pages/home/home.component"));
 const Navigation = lazy(
-  () => import("./pages/navigation/navigation.component")
+  () => import("./components/navbar/navigation.component")
 );
 const Authentication = lazy(
   () => import("./pages/authentication/authentication.component")
