@@ -7,7 +7,6 @@ import {
   HeaderBlock,
   Total
 } from "./checkout.styles";
-import PaymentForm from "../../components/payment-form/payment-form.component";
 
 const CheckOut = () => {
   const cartItems = useSelector(selectCartItems);
